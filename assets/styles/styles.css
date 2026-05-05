@@ -1,0 +1,51 @@
+/* NRD PDV - Estilos (pantalla táctil, sin scroll general) */
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow: hidden;
+  -webkit-overflow-scrolling: touch;
+}
+* {
+  box-sizing: border-box;
+}
+
+/* Tiles del dashboard sin redondeo */
+#pdv-tiles-grid .pdv-tile {
+  border-radius: 0;
+}
+
+/* Product cards sin redondeo; contenido siempre visible */
+.pdv-product-card {
+  border-radius: 0;
+}
+.pdv-product-card p {
+  color: #111827;
+  visibility: visible;
+  opacity: 1;
+}
+.pdv-product-card .text-gray-500 {
+  color: #6b7280;
+}
+
+/* PDV: zonas con scroll propio (solo estas hacen scroll, no la página) */
+#pdv-products-grid,
+#pdv-cart-items {
+  -webkit-overflow-scrolling: touch;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+/* La grilla de productos debe poder hacer scroll; el contenido interno puede crecer */
+#pdv-products-grid {
+  min-height: 0;
+}
+
+/* Áreas táctiles mínimas ~48px para uso en pantalla táctil */
+.pdv-touch {
+  min-height: 48px;
+  min-width: 48px;
+}
+.pdv-touch-lg {
+  min-height: 56px;
+  min-width: 56px;
+}
