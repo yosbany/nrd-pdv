@@ -25,7 +25,7 @@
   <script>
     window.logger = window.logger || console;
   </script>
-  <link rel="stylesheet" href="assets/styles/styles.css?v=1781967493163">
+  <link rel="stylesheet" href="assets/styles/styles.css?v=1781967764267">
   <meta name="theme-color" content="#dc2626">
   <link rel="icon" type="image/png" sizes="192x192" href="assets/icons/icon-192.png">
   <link rel="apple-touch-icon" href="assets/icons/icon-192.png">
@@ -163,7 +163,7 @@
   <script>
     (function() {
       var isLocalhost = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1' || window.location.hostname === '0.0.0.0';
-      var nrdDataAccessSrc = isLocalhost ? '/nrd-data-access/dist/nrd-data-access.js' : 'https://cdn.jsdelivr.net/gh/yosbany/nrd-data-access@main/dist/nrd-data-access.js';
+      var nrdDataAccessSrc = isLocalhost ? '/nrd-data-access/dist/nrd-data-access.js' : 'https://datos.nrdonline.site/dist/nrd-data-access.js';
       var script1 = document.createElement('script');
       script1.src = nrdDataAccessSrc;
       document.head.appendChild(script1);
@@ -172,7 +172,7 @@
   <script>
     (function() {
       var isLocalhost = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1' || window.location.hostname === '0.0.0.0';
-      var nrdCommonSrc = isLocalhost ? '/nrd-common/dist/nrd-common.js' : 'https://cdn.jsdelivr.net/gh/yosbany/nrd-common@main/dist/nrd-common.js';
+      var nrdCommonSrc = isLocalhost ? '/nrd-common/dist/nrd-common.js' : 'https://common.nrdonline.site/dist/nrd-common.js';
       var script2 = document.createElement('script');
       script2.src = nrdCommonSrc;
       document.head.appendChild(script2);
@@ -203,10 +203,10 @@
   <script>
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', function() {
-        navigator.serviceWorker.register('service-worker.js?v=1781967493163').catch(function(err) { console.log('SW failed', err); });
+        navigator.serviceWorker.register('service-worker.js?v=1781967764267').catch(function(err) { console.log('SW failed', err); });
       });
     }
   </script>
-  <script type="module" src="app.js?v=1781967493163"></script>
+  <script type="module" src="app.js?v=1781967764267"></script>
 </body>
 </html>
