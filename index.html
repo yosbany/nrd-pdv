@@ -25,7 +25,7 @@
   <script>
     window.logger = window.logger || console;
   </script>
-  <link rel="stylesheet" href="assets/styles/styles.css?v=1781980090846">
+  <link rel="stylesheet" href="assets/styles/styles.css?v=1781980709346">
   <meta name="theme-color" content="#dc2626">
   <link rel="icon" type="image/png" sizes="192x192" href="assets/icons/icon-192.png">
   <link rel="apple-touch-icon" href="assets/icons/icon-192.png">
@@ -64,12 +64,8 @@
 <body class="bg-white text-black font-sans antialiased h-screen overflow-hidden">
   <!-- Spinner de procesamiento: inyectado por NRDCommon -->
 
-  <div id="redirecting-screen" class="min-h-screen flex items-center justify-center bg-white">
-    <div class="flex flex-col items-center gap-4">
-      <div class="w-12 h-12 border-4 border-gray-200 border-t-red-600 rounded-full animate-spin"></div>
-      <p class="text-sm text-gray-600 font-light" data-auth-status>Redirigiendo...</p>
-    </div>
-  </div>
+  <!-- Auth redirect: spinner unificado via NRDCommon -->
+  <div id="redirecting-screen" class="hidden" aria-hidden="true"></div>
 
   <div id="login-screen" class="min-h-screen flex items-center justify-center p-4 sm:p-6 hidden">
     <div class="w-full max-w-sm">
@@ -198,10 +194,10 @@
   <script>
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', function() {
-        navigator.serviceWorker.register('service-worker.js?v=1781980090846').catch(function(err) { console.log('SW failed', err); });
+        navigator.serviceWorker.register('service-worker.js?v=1781980709346').catch(function(err) { console.log('SW failed', err); });
       });
     }
   </script>
-  <script type="module" src="app.js?v=1781980090846"></script>
+  <script type="module" src="app.js?v=1781980709346"></script>
 </body>
 </html>

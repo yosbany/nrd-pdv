@@ -232,7 +232,7 @@ function confirmarCobro() {
     if (window.showWarning) window.showWarning('No hay artículos.');
     return;
   }
-  if (window.showSpinner) window.showSpinner('Guardando venta...');
+  showSpinner('Guardando venta...');
   const orderPayload = {
     clientId: cart.clientId || 'sin-cliente',
     clientName: cart.clientName || 'Sin cliente',
@@ -259,7 +259,7 @@ function confirmarCobro() {
       logger.error('Error guardando venta', e);
       if (window.showError) window.showError('Error al guardar la venta.');
     } finally {
-      if (window.hideSpinner) window.hideSpinner();
+      hideSpinner();
     }
   })();
 }
