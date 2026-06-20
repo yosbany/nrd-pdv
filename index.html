@@ -25,7 +25,7 @@
   <script>
     window.logger = window.logger || console;
   </script>
-  <link rel="stylesheet" href="assets/styles/styles.css?v=1781979488703">
+  <link rel="stylesheet" href="assets/styles/styles.css?v=1781980090846">
   <meta name="theme-color" content="#dc2626">
   <link rel="icon" type="image/png" sizes="192x192" href="assets/icons/icon-192.png">
   <link rel="apple-touch-icon" href="assets/icons/icon-192.png">
@@ -62,12 +62,7 @@
   </script>
 </head>
 <body class="bg-white text-black font-sans antialiased h-screen overflow-hidden">
-  <div id="loading-spinner" class="fixed inset-0 bg-black/20 z-[60] hidden flex items-center justify-center">
-    <div class="bg-white p-6 flex flex-col items-center gap-4 shadow-lg">
-      <div class="w-12 h-12 border-4 border-gray-200 border-t-red-600 rounded-full animate-spin"></div>
-      <p class="text-sm text-gray-600 font-light">Cargando...</p>
-    </div>
-  </div>
+  <!-- Spinner de procesamiento: inyectado por NRDCommon -->
 
   <div id="redirecting-screen" class="min-h-screen flex items-center justify-center bg-white">
     <div class="flex flex-col items-center gap-4">
@@ -203,10 +198,10 @@
   <script>
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', function() {
-        navigator.serviceWorker.register('service-worker.js?v=1781979488703').catch(function(err) { console.log('SW failed', err); });
+        navigator.serviceWorker.register('service-worker.js?v=1781980090846').catch(function(err) { console.log('SW failed', err); });
       });
     }
   </script>
-  <script type="module" src="app.js?v=1781979488703"></script>
+  <script type="module" src="app.js?v=1781980090846"></script>
 </body>
 </html>
