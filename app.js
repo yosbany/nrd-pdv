@@ -52,51 +52,12 @@ function switchView(viewName, options = {}) {
 // Expose for views (e.g. open payment from POS)
 window.pdvSwitchView = switchView;
 
-// AuthService (nrd-common) maneja login form, showLoginScreen y showRedirectingScreen.
-// app.js solo inicializa la navegación cuando el usuario está autenticado.
-
-function waitForNRDAndInitialize() {
-  const maxWait = 10000;
-  const startTime = Date.now();
-  const checkNRD = setInterval(() => {
-    const nrd = window.nrd;
-    const NRDCommon = window.NRDCommon;
-    if (nrd && nrd.auth && NRDCommon) {
-      clearInterval(checkNRD);
-      const currentUser = nrd.auth.getCurrentUser();
-      if (currentUser) {
-        initializeAppForUser(currentUser);
-      }
-      nrd.auth.onAuthStateChanged((user) => {
-        if (user) {
-          initializeAppForUser(user);
-        } else {
-          appInitialized = false;
-        }
-      });
-    } else if (Date.now() - startTime >= maxWait) {
-      clearInterval(checkNRD);
-      logger.error('NRD, auth, or NRDCommon not available after timeout');
-    }
-  }, 100);
-}
-
-waitForNRDAndInitialize();
-
-let appInitialized = false;
 function initializeAppForUser(user) {
-  if (appInitialized) {
-    logger.debug('App already initialized, skipping');
-    return;
-  }
-  appInitialized = true;
-  const appScreen = document.getElementById('app-screen');
-  const loginScreen = document.getElementById('login-screen');
-  const redirectingScreen = document.getElementById('redirecting-screen');
-  if (appScreen) appScreen.classList.remove('hidden');
-  if (loginScreen) loginScreen.classList.add('hidden');
-  if (redirectingScreen) redirectingScreen.classList.add('hidden');
-  setTimeout(() => {
-    switchView('dashboard');
-  }, 300);
+  logger.info('Initializing app for user', { uid: user.uid, email: user.email });
+  switchView('dashboard');
 }
+
+(window.NRDCommon?.startApp || function(fn, opts) {
+  window.__nrdStartQueue = window.__nrdStartQueue || [];
+  window.__nrdStartQueue.push({ onReady: fn, options: opts || {} });
+})(initializeAppForUser, { initDelay: 300 });
